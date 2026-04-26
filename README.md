@@ -1,16 +1,18 @@
 # Heart Attack Prediction
 
-An end-to-end machine learning project that predicts the risk of a heart attack based on clinical parameters — from exploratory data analysis to a deployed Streamlit web application backed by a FastAPI model server.
+An end-to-end machine learning project that predicts the risk of a heart attack based on clinical parameters — from exploratory data analysis and model training to a fully deployed Streamlit web application backed by a FastAPI model server.
 
 ## Project Structure
 
 ```
 heart-attack-prediction/
-├── app/                  # FastAPI backend application
-├── model/                # Trained ML model files
-├── streamlit_app.py      # Streamlit frontend app
-├── Dockerfile            # Docker configuration for deployment
-└── requirements.txt      # Python dependencies
+├── app/                      # FastAPI backend application
+├── model/                    # Trained ML model files
+├── notebooks/
+│   └── heart_final.ipynb     # EDA, feature engineering & model training
+├── streamlit_app.py          # Streamlit frontend app
+├── Dockerfile                # Docker configuration for deployment
+└── requirements.txt          # Python dependencies
 ```
 
 ## Tech Stack
@@ -20,21 +22,32 @@ heart-attack-prediction/
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+
+## Project Pipeline
+
+This project covers the full ML pipeline in one place:
+
+1. **Exploratory Data Analysis** — Understanding the dataset, distributions, correlations, and class balance (see `notebooks/heart_final.ipynb`)
+2. **Feature Engineering** — Encoding categorical variables, handling missing values, scaling features
+3. **Model Training & Evaluation** — Training classification models, comparing performance, selecting the best model
+4. **API Deployment** — Serving the trained model via FastAPI, deployed on Render
+5. **Web App** — Interactive Streamlit frontend that sends patient data to the API and displays predictions
 
 ## Features
 
-- **Clinical Input Form** — Users enter patient details (age, sex, chest pain type, cholesterol, blood pressure, etc.)
+- **Clinical Input Form** — Users enter 13 patient parameters including age, sex, chest pain type, cholesterol, blood pressure, and more
 - **ML Prediction** — Trained classification model predicts heart attack risk with a probability score
-- **FastAPI Backend** — Model served via a REST API deployed on Render
-- **Streamlit Frontend** — Interactive web interface for real-time predictions
-- **Dockerized** — Fully containerized for easy deployment
+- **FastAPI Backend** — Model served via a REST API at `/predict/` deployed on Render
+- **Streamlit Frontend** — Clean, interactive web interface for real-time predictions
+- **Dockerized** — Fully containerized for easy deployment anywhere
 
 ## How It Works
 
 1. User inputs clinical parameters via the Streamlit app
-2. The app sends a POST request to the FastAPI backend at `/predict/`
-3. The backend runs the trained model and returns a prediction + probability
-4. The result is displayed as **Heart Attack Risk** or **No Risk**
+2. App sends a POST request to the FastAPI backend
+3. Backend runs the trained model and returns a prediction + probability score
+4. Result is displayed as **Heart Attack Risk** or **No Risk**
 
 ## Input Parameters
 
@@ -73,7 +86,7 @@ docker run -p 8000:8000 heart-attack-prediction
 
 ## Dataset
 
-Based on the classic Heart Disease dataset — 13 clinical features used to predict the presence of heart disease.
+Based on the classic Heart Disease UCI dataset — 13 clinical features used to predict the presence of heart disease. Full EDA and preprocessing steps are documented in `notebooks/heart_final.ipynb`.
 
 ---
 
