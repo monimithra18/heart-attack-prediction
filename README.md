@@ -32,7 +32,7 @@ This project covers the full ML pipeline in one place:
 2. **Feature Engineering** — Encoding categorical variables, handling missing values, scaling features
 3. **Model Training & Evaluation** — Training classification models, comparing performance, selecting the best model
 4. **API Deployment** — Serving the trained model via FastAPI, deployed on Render
-5. **Web App** — Interactive Streamlit frontend that sends patient data to the API and displays predictions
+5. **Web App** — Interactive Streamlit frontend that sends patient data to the API and displays predictions 
 
 ## Features
 
